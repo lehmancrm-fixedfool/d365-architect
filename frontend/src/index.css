@@ -1,0 +1,88 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html, body, #root {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    background-color: #090e1a;
+    color: #e2e8f0;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+}
+
+@layer components {
+  /* Selection styling */
+  ::selection {
+    background: rgba(59, 130, 246, 0.3);
+    color: #fff;
+  }
+
+  /* Prose table improvements */
+  .prose table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  .prose table tr:last-child td {
+    border-bottom: none;
+  }
+
+  /* Mermaid diagram adjustments */
+  .mermaid-container svg {
+    max-width: 100% !important;
+  }
+
+  /* Custom focus styles */
+  button:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible {
+    outline: 2px solid rgba(59, 130, 246, 0.5);
+    outline-offset: 2px;
+  }
+
+  /* Smooth scrolling */
+  .overflow-y-auto {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer utilities {
+  .bg-white\/3 {
+    background-color: rgba(255, 255, 255, 0.03);
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+}

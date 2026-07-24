@@ -1,0 +1,35 @@
+# Environment
+.env
+.env.local
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+.eggs/
+dist/
+build/
+venv/
+.venv/
+env/
+
+# Node.js
+node_modules/
+frontend/dist/
+frontend/.vite/
+
+# Projects (local data — not committed)
+# projects/*.json  # Uncomment to exclude project files from git
+
+# Editor
+.vscode/settings.json
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db

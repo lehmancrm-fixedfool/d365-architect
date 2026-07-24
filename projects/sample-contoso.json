@@ -1,0 +1,121 @@
+{
+  "id": "contoso1",
+  "name": "Contoso Contact Center Migration",
+  "slug": "contoso-contact-center",
+  "description": "Migration from Genesys to D365 Contact Center with AI-powered routing and Copilot Studio bot",
+  "status": "active",
+  "context": {
+    "client_name": "Contoso Financial Services",
+    "engagement_name": "CCaaS Modernization Phase 1",
+    "industry": "Financial Services",
+    "region": "North America",
+    "d365_modules": ["D365 Contact Center", "D365 Customer Service", "Copilot Studio", "Power Automate"],
+    "azure_services": ["Azure Communication Services", "Azure OpenAI Service", "Azure Functions", "Azure Service Bus"],
+    "current_state": "Legacy Genesys on-prem contact center with 450 agents, no AI capability, high AHT",
+    "desired_state": "Cloud-native D365 Contact Center with AI routing, Copilot assistance, and real-time analytics",
+    "key_challenges": [
+      "Complex IVR logic to migrate (87 call flows)",
+      "Genesys custom reports need Power BI equivalents",
+      "Agent desktop change management for 450 agents",
+      "Regulatory recording requirements (7-year retention)"
+    ],
+    "constraints": [
+      "Go-live by Q3 2025",
+      "Cannot run parallel systems for more than 6 weeks",
+      "All data must remain in US geo"
+    ],
+    "stakeholders": ["CIO", "VP Customer Operations", "Head of IT Security", "Compliance Officer"]
+  },
+  "assumptions": [
+    {
+      "id": "a001",
+      "text": "Contoso has existing Microsoft 365 E3 licenses — Copilot add-ons will be needed",
+      "validated": true,
+      "impact_if_wrong": "Significant additional licensing cost",
+      "created_at": "2026-03-01T10:00:00"
+    },
+    {
+      "id": "a002",
+      "text": "ACS phone numbers can be provisioned for all 450 agent lines",
+      "validated": false,
+      "impact_if_wrong": "May need BYOC/Direct Routing arrangement",
+      "created_at": "2026-03-01T10:00:00"
+    },
+    {
+      "id": "a003",
+      "text": "Dataverse environment will be provisioned in US East region",
+      "validated": true,
+      "impact_if_wrong": "Data residency compliance issue",
+      "created_at": "2026-03-01T10:00:00"
+    }
+  ],
+  "decisions": [
+    {
+      "id": "d001",
+      "title": "Use Managed Voice Channel over BYOC",
+      "description": "Selected Microsoft-managed ACS voice over Bring Your Own Carrier",
+      "rationale": "Simpler operations, included in Contact Center license, lower total cost",
+      "alternatives": ["BYOC via Direct Routing", "Teams Phone System"],
+      "status": "accepted",
+      "created_at": "2026-03-05T14:00:00"
+    },
+    {
+      "id": "d002",
+      "title": "Copilot Studio for IVR/Bot, not Azure Bot Framework",
+      "description": "Use Copilot Studio for all self-service bot and IVR automation",
+      "rationale": "Lower development effort, native D365 integration, generative AI built-in",
+      "alternatives": ["Azure Bot Framework", "Power Virtual Agents legacy"],
+      "status": "accepted",
+      "created_at": "2026-03-07T10:00:00"
+    }
+  ],
+  "raid_items": [
+    {
+      "id": "r001",
+      "category": "risk",
+      "title": "IVR migration complexity underestimated",
+      "description": "87 Genesys call flows may contain logic not directly mappable to Copilot Studio topics",
+      "severity": "high",
+      "status": "open",
+      "owner": "Technical Lead",
+      "mitigation": "Conduct IVR audit in sprint 1, identify complex flows for custom development",
+      "created_at": "2026-03-01T10:00:00"
+    },
+    {
+      "id": "r002",
+      "category": "risk",
+      "title": "Regulatory recording not GA in ACS",
+      "description": "7-year retention requirement may need custom recording solution",
+      "severity": "high",
+      "status": "open",
+      "owner": "Solution Architect",
+      "mitigation": "Evaluate Verint and NICE recording adapter for ACS",
+      "created_at": "2026-03-01T10:00:00"
+    },
+    {
+      "id": "d001",
+      "category": "dependency",
+      "title": "Microsoft tenant admin access for ACS provisioning",
+      "description": "Need Global Admin or Communication Administrator role in M365 tenant",
+      "severity": "high",
+      "status": "open",
+      "owner": "Client IT Team",
+      "mitigation": "Request elevated access in kick-off week",
+      "created_at": "2026-03-01T10:00:00"
+    },
+    {
+      "id": "a001",
+      "category": "assumption",
+      "title": "Contoso will provide dedicated dev environment",
+      "description": "Assumes client will provision D365 sandbox environment in week 1",
+      "severity": "medium",
+      "status": "open",
+      "owner": "Project Manager",
+      "created_at": "2026-03-01T10:00:00"
+    }
+  ],
+  "artifacts": [],
+  "tags": ["contact-center", "migration", "ccaas", "phase-1"],
+  "created_at": "2026-03-01T10:00:00",
+  "updated_at": "2026-03-21T10:00:00"
+}

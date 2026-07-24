@@ -1,0 +1,27 @@
+{
+  "id": "a939a6ce",
+  "name": "Test Project",
+  "slug": "test-project",
+  "description": "",
+  "status": "active",
+  "context": {
+    "client_name": "",
+    "engagement_name": "",
+    "industry": "",
+    "region": "",
+    "d365_modules": [],
+    "azure_services": [],
+    "current_state": "",
+    "desired_state": "",
+    "key_challenges": [],
+    "constraints": [],
+    "stakeholders": []
+  },
+  "assumptions": [],
+  "decisions": [],
+  "raid_items": [],
+  "artifacts": [],
+  "tags": [],
+  "created_at": "2026-03-21T08:47:15.588147",
+  "updated_at": "2026-03-21T08:47:15.588147"
+}
