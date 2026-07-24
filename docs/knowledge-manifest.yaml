@@ -1,0 +1,344 @@
+# d365-architect-agent-knowledge.manifest.yaml
+# Purpose:
+#   Seed knowledge acquisition for a CLI-built D365 Architect Agent focused on
+#   AIBS, Copilot Studio, Agent Builder, skills, knowledge, solution modeling,
+#   Dynamics 365 architecture, Field Service, Sales, Service, integration, AI governance,
+#   and Ecolab OneCRM delivery context.
+#
+# Usage:
+#   1. Use each source locator as a retrieval target.
+#   2. Authenticate with Microsoft 365/Graph/SharePoint/ADO/Learn as applicable.
+#   3. Download or crawl content.
+#   4. Normalize to markdown.
+#   5. Chunk by section/header/slide/page.
+#   6. Attach metadata tags below.
+#   7. Index into the D365 Architect Agent knowledge store.
+#   8. Preserve source URL, title, modified date, and source system for citations.
+
+agent_knowledge_pack:
+  name: "D365 Architect Agent - AIBS Copilot Knowledge Pack"
+  version: "1.0"
+  created_at: "2026-07-24"
+  
+  owner_context:
+    user_role: "Dynamics 365 / Power Platform Solution Architect"
+    target_agent: "D365 Architect CLI Agent"
+    primary_customer_context: "Ecolab OneCRM"
+    primary_use_cases:
+      - solution_modeling
+      - architecture_review
+      - ADO_requirement_analysis
+      - fit_gap_analysis
+      - Copilot_and_agent_architecture
+      - D365_Field_Service_design
+      - D365_Sales_design
+      - D365_Customer_Service_design
+      - integration_architecture
+      - AI_governance
+      - responsible_AI_review
+      - delivery_accelerator_reuse
+
+  ingestion_rules:
+    auth:
+      required: true
+      expected_sources:
+        - Microsoft 365 Graph / SharePoint / OneDrive
+        - Microsoft Learn
+        - Azure DevOps Wiki
+        - Viva Learning
+        - Internal intranet / SharePoint pages
+    
+    ingestion_format:
+      preferred_output: "markdown"
+      retain_original_files: true
+      retain_citations: true
+      chunking_strategy:
+        - chunk_by_heading
+        - chunk_by_slide
+        - chunk_by_table
+        - chunk_by_decision_section
+      max_chunk_tokens: 1200
+      overlap_tokens: 150
+    
+    metadata_required:
+      - source_title
+      - source_url
+      - source_type
+      - source_system
+      - author_or_owner
+      - last_modified
+      - business_domain
+      - technology_domain
+      - customer_context
+      - confidence
+      - ingestion_priority
+    
+    quality_controls:
+      - do_not_infer_unstated_scope
+      - distinguish_final_vs_draft_artifacts
+      - preserve_customer_confidentiality_labels
+      - flag_conflicting_scope_between_SOW_and_solution_decks
+      - flag_AI_scope_constraints
+      - flag_governance_and_responsible_AI_requirements
+
+  knowledge_sources:
+    # AIBS and AI First Delivery Framework
+    aibs_framework:
+      priority: "P0"
+      sources:
+        - title: "ECOLAB AI First Delivery Framework Sync"
+          type: "loop"
+          url_pattern: "https://loop.cloud.microsoft/p/..."
+          topics:
+            - SpecKit integration
+            - D365 spec architect behavior
+            - agents, skills, prompts patterns
+            - requirements-to-plan-to-task traceability
+        
+        - title: "AI-First-Delivery-Approach-Ecolab"
+          type: "pptx"
+          topics:
+            - delivery accelerators
+            - agentic BVF
+            - KPI Lot Agent
+            - AIBS Delivery MCP ecosystem
+        
+        - title: "FY25_Ecolab_ISD_AIBS"
+          type: "pptx"
+          topics:
+            - Ecolab Copilot adoption story
+            - Pest Elimination Copilot pattern
+            - Ecolab Virtual Assistant framework
+
+    # Ecolab OneCRM Architecture and Context
+    ecolab_onecrm:
+      priority: "P0"
+      sources:
+        - title: "Ecolab-OneCRM-SOW Final"
+          type: "docx"
+          topics:
+            - final scope and architecture
+            - integration inventory
+            - Copilot for Sales and Service scope
+            - Responsible AI constraints
+        
+        - title: "Ecolab_D365_FieldService_Scope"
+          type: "pptx"
+          topics:
+            - Field Service AI readiness
+            - agent governance
+            - dispatcher and technician workflows
+            - adoption metrics and KPIs
+        
+        - title: "Ecolab EBC Demo - Sales"
+          type: "docx"
+          topics:
+            - sales acceleration agent patterns
+            - opportunity scoring and risk flags
+            - customer signal grounding
+            - meeting notes and email drafting
+
+    # Official Microsoft Docs and Architecture
+    microsoft_docs:
+      priority: "P0"
+      sources:
+        - title: "Agent Builder in Microsoft 365 Copilot"
+          type: "learn"
+          url: "https://learn.microsoft.com/en-us/microsoft-365/copilot/extensibility/agent-builder"
+          topics:
+            - declarative agents
+            - knowledge sources
+            - governance and support boundaries
+        
+        - title: "Copilot Studio Documentation Hub"
+          type: "learn"
+          url: "https://learn.microsoft.com/en-us/microsoft-copilot-studio/"
+          topics:
+            - knowledge sources
+            - tools and connectors
+            - MCP servers
+            - agent flows
+            - other-agent integration
+        
+        - title: "Define your solution architecture - Copilot Studio"
+          type: "learn"
+          url: "https://learn.microsoft.com/en-us/microsoft-copilot-studio/guidance/architecture-overview"
+          topics:
+            - agent lifecycle
+            - build and publish
+            - security and compliance
+            - enterprise-grade patterns
+
+    # D365 AI and Copilot
+    d365_ai:
+      priority: "P0"
+      sources:
+        - title: "Agents, Copilot, and AI capabilities in Dynamics 365"
+          type: "learn"
+          url: "https://learn.microsoft.com/en-us/dynamics365/copilot/ai-get-started"
+          topics:
+            - D365 Copilot overview
+            - MCP and ERP servers
+            - D365 agents with Dataverse data
+            - Customer Service, Sales, Field Service, Project Ops
+        
+        - title: "Build an agent in Copilot Studio to create sample data"
+          type: "learn"
+          url: "https://learn.microsoft.com/en-us/dynamics365/guidance/resources/field-service-deploy-copilot-studio-create-sample-data"
+          topics:
+            - D365 Field Service + Copilot Studio
+            - Dataverse solution packaging
+            - Power Automate integration
+
+    # Learning Paths and Training
+    learning_paths:
+      priority: "P1"
+      sources:
+        - title: "No-code Agents in Microsoft 365"
+          type: "course"
+          topics:
+            - no-code agent fundamentals
+            - Agent Builder vs Copilot Studio
+            - custom agents for business scenarios
+        
+        - title: "Creating Agents with Copilot Studio"
+          type: "course"
+          topics:
+            - agent templates
+            - structured instructions
+            - knowledge sources and external systems
+            - testing and publishing
+        
+        - title: "Integrate agents with enterprise systems"
+          type: "learning_path"
+          topics:
+            - enterprise integration patterns
+            - connectors and REST API tools
+            - MCP connection patterns
+            - grounding with enterprise knowledge
+        
+        - title: "Design and build multi-agent solutions"
+          type: "learning_path"
+          topics:
+            - multi-agent architecture
+            - child agent patterns
+            - connected agent patterns
+            - scalable agent systems
+
+    # Internal Support and Architecture
+    internal_support:
+      priority: "P1"
+      sources:
+        - title: "How to troubleshoot declarative agents in M365 Copilot"
+          type: "ado_wiki"
+          url: "https://Supportability.visualstudio.com/PowerPlatform/_wiki/wikis/PowerPlatform/2539436"
+          topics:
+            - declarative agent architecture
+            - tool calling and orchestration
+            - connector-grounded agents
+            - licensing and PAYG
+        
+        - title: "Supporting M365 Copilot Chat"
+          type: "ado_wiki"
+          topics:
+            - Copilot agent governance
+            - agent management in Admin Center
+            - agent registry
+        
+        - title: "Copilot Support Area Path (SAP)"
+          type: "ado_wiki"
+          topics:
+            - support boundaries for Agent Builder and Copilot Studio
+            - first-party vs custom agents
+            - support ownership routing
+        
+        - title: "M365 Copilot App Architecture"
+          type: "ado_wiki"
+          topics:
+            - app architecture
+            - agents module
+            - Microsoft Graph, SharePoint Embedded, Entra ID dependencies
+        
+        - title: "June 2026 Copilot Studio Roadmap"
+          type: "ado_wiki"
+          topics:
+            - new agent designer
+            - Dracarys orchestrator
+            - markdown-based reusable skills
+            - large content processing
+
+    # Certification and Competency
+    architect_competency:
+      priority: "P1"
+      sources:
+        - title: "Microsoft Certified: Agentic AI Business Solutions Architect"
+          type: "learn"
+          url: "https://learn.microsoft.com/en-us/credentials/certifications/agentic-ai-business-solutions-architect/"
+          topics:
+            - solution architect competency model
+            - agentic-first solutions
+            - multi-agent orchestration
+            - secure cross-platform AI
+            - D365, Power Platform, Copilot Studio, Foundry
+            - A2A and MCP patterns
+            - Responsible AI practices
+
+  ingestion_status:
+    completed: []
+    in_progress: []
+    pending: [
+      "AIBS resource hub (AI-Business-Resources.aspx)",
+      "AIBS home page (HomePage.aspx)",
+      "AIBS strategy (AI-Business-Strategy.aspx)",
+      "AIBS solution plays (AI-Business-Solutions.aspx)",
+      "FY27 AI Business Solutions POR.docx"
+    ]
+
+  agent_modes:
+    - name: "Solution Architect Mode"
+      description: "Multi-modal D365 architecture thinking"
+      capabilities:
+        - scope validation and fit-gap analysis
+        - solution architecture pattern recommendation
+        - ADO work item decomposition
+        - cross-platform integration design
+    
+    - name: "Copilot & Agent Design"
+      description: "AI-first agent and Copilot Studio patterns"
+      capabilities:
+        - declarative vs custom engine agent selection
+        - multi-agent orchestration design
+        - skill and tool library assembly
+        - governance and responsible AI review
+    
+    - name: "Field Service Specialist"
+      description: "Deep D365 Field Service expertise"
+      capabilities:
+        - dispatcher and technician workflow design
+        - resource scheduling and optimization
+        - Copilot-assisted dispatch patterns
+        - inventory and parts agent patterns
+        - agentic notifications and escalations
+    
+    - name: "Integration Architect"
+      description: "Cross-platform integration design"
+      capabilities:
+        - MuleSoft, Data Factory, API Management patterns
+        - Dataverse and external system sync
+        - event-driven integration patterns
+        - responsible data governance
+    
+    - name: "Governance & RAC Reviewer"
+      description: "Responsible AI and governance review"
+      capabilities:
+        - Responsible AI Canvas completion
+        - AI scope constraint validation
+        - governance and compliance checking
+        - risk flagging and escalation
+
+  citation_requirements:
+    - preserve_source_url_in_all_responses
+    - cite_specific_section_or_slide_when_applicable
+    - flag_confidence_and_information_recency
+    - distinguish_final_vs_draft_artifacts
+    - flag_ecolab_confidential_or_restricted_content
